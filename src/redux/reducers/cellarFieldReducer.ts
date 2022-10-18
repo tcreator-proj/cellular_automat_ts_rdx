@@ -2,20 +2,21 @@ import Field from '../../models/Field';
 import { Dimension } from '../../types/enums';
 import { ACTIONS } from '../actions/actions';
 
-interface FieldState {
+type FieldState = {
   field: Field
 }
 
+const f: Field = new Field(60, Dimension.ONE, null, false);
 const initialBoard: FieldState = {
-  field: new Field(60, Dimension.ONE, null, false)
+  field: f
 }
 
 export function cellarFieldReducer(state = initialBoard, action: any) {
   switch(action.type) {
     case ACTIONS.CHOICE_POINT: {
-      const {x, y} = action.payload;
-      state.field.markCell(x, y);
-      return state;
+      const {coord} = action.payload;
+      state.field.markCell(coord.x, coord.y);
+      return {...state};
     }
     default: {
       return state;

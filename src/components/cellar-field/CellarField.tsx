@@ -7,12 +7,12 @@ import CellarRow from '../cellar-row/CellarRow';
 import style from './cellar-field.module.css';
 
 export const CellarField = (props: any) => {
-  const field = props.field;
+  const {field, onClickCellHandler} = props;
 
   return (
     <Row className={style.field}>
       {
-        field.field.field.map((el: RowLine) => <CellarRow cells={el.line} key={el.id}/>)
+        field.field.field.map((el: RowLine) => <CellarRow cells={el.cells} onClickCellHandler={onClickCellHandler} key={el.id}/>)
       }
     </Row>
   )
@@ -23,7 +23,7 @@ const mapStateToProps = (state: any) => ({
 })
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  onClick: (coord: Coord) => dispatch(clickCell(coord))
+  onClickCellHandler: (coord: Coord) => dispatch(clickCell(coord))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CellarField)

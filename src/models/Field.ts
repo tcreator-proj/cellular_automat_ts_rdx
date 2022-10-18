@@ -40,6 +40,7 @@ export default class Field {
   }
 
   public markCell(x: number, y:number): void {
+ 
     const row: Row = this.field[x];
     const currentCell: Cell | null = row.getCell(y);
 

@@ -2,11 +2,11 @@ import {Cell} from "./Cell";
 import {nanoid} from 'nanoid';
 
 export class Row {
-  protected cells: Cell[];
+  protected _cells: Cell[];
   protected _id: string;
 
   constructor() {
-    this.cells = [];
+    this._cells = [];
     this._id = nanoid();
   }
 
@@ -15,15 +15,15 @@ export class Row {
   }
 
   public getCell(index: number): Cell | null {
-    return this.cells[index] || null;
+    return this._cells[index] || null;
   }
 
-  public get line(): Cell[] {
-    return this.cells;
+  public get cells(): Cell[] {
+    return this._cells;
   }
 
   public get len(): number {
-    return this.cells.length;
+    return this._cells.length;
   }
 
   public get id() {
