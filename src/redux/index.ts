@@ -1,4 +1,4 @@
-import {createStore, combineReducers, Reducer} from 'react-redux';
+import {createStore, combineReducers, Reducer} from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { cellarFieldReducer } from './reducers/cellarFieldReducer';
 

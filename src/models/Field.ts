@@ -1,16 +1,16 @@
 import { Dimension } from "../types/enums";
-import Cell from "./Cell"
+import {Cell} from "./Cell"
 import Coord from "./Coord";
 import ModelCells from "./ModelCells";
-import Row from "./Row";
+import {Row} from "./Row";
 
 export default class Field {
-  protected field: Row[] = [];
+  protected _field: Row[] = [];
   protected size: number;
-  protected dimension: typeof Dimension;
+  protected dimension: Dimension;
   protected preparedModel: ModelCells | null;
 
-  constructor(size: number, dimension: typeof Dimension, preparedModel: ModelCells | null, random: boolean) {
+  constructor(size: number, dimension: Dimension, preparedModel: ModelCells | null, random: boolean) {
     this.size = size;
     this.dimension = dimension;
     this.preparedModel = preparedModel;
@@ -19,10 +19,7 @@ export default class Field {
       return;
     } else {
       this.generateField();
-    }
-
-        
-    
+    }    
   }
 
   private generateField(): void {
@@ -34,7 +31,7 @@ export default class Field {
         const cell: Cell = new Cell(coord, false);
         row.appendCell(cell);
       }
-      this.field.push(row);
+      this._field.push(row);
     }
   }
 
@@ -49,5 +46,9 @@ export default class Field {
     if(currentCell) {
       currentCell.mark();
     }
+  }
+
+  public get field(): Row[] {
+    return this._field;
   }
 }

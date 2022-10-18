@@ -7,8 +7,8 @@ interface FieldState {
 }
 
 const initialBoard: FieldState = {
-  field: new Field(60, Dimension.ONE)
-} 
+  field: new Field(60, Dimension.ONE, null, false)
+}
 
 export function cellarFieldReducer(state = initialBoard, action: any) {
   switch(action.type) {
