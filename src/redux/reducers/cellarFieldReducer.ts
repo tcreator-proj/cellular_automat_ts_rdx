@@ -6,7 +6,7 @@ type FieldState = {
   field: Field
 }
 
-const f: Field = new Field(60, Dimension.ONE, null, false);
+const f: Field = new Field(64, Dimension.ONE, null, false);
 const initialBoard: FieldState = {
   field: f
 }

@@ -10,7 +10,7 @@ export const CellarField = (props: any) => {
   const {field, onClickCellHandler} = props;
 
   return (
-    <Row className={style.field}>
+    <Row className={style.field_600}>
       {
         field.field.field.map((el: RowLine) => <CellarRow cells={el.cells} onClickCellHandler={onClickCellHandler} key={el.id}/>)
       }

@@ -1,3 +1,3 @@
 export enum ACTIONS {
-  CHOICE_POINT
+  CHOICE_POINT, PLAY, STEP_UP, CLEAR
 }
