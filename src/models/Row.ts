@@ -29,4 +29,29 @@ export class Row {
   public get id() {
     return this._id;
   }
+
+  /**
+   * Принимает первый и последний индекс триады. 
+   * Берёт из массива клеток
+   * Закольцовывает массив.
+   * Преобразовывает смерть клетки как 0, жизнь как 1
+   * Возвращает бинарную триаду
+   * @param start {@link Number}
+   * @param end {@link Number}
+   * @returns {@link Array<number>} [start, start + 1, end]
+   */
+  public getBinaryTriad(start: number, end: number): number[] {
+    let left = start;
+    let right = end;
+    const cells: Cell[] = this._cells;
+    if(right > this.len - 1) {
+      right = right - this.len;
+    }
+
+    return [
+      Number(cells.at(left)?.point),
+      Number(cells.at(left + 1)?.point),
+      Number(cells.at(right)?.point),
+    ] 
+  }
 }

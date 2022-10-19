@@ -39,6 +39,14 @@ export default class Field {
 
   }
 
+  public getRow(index: number): Row {
+    return this._field[index];
+  }
+
+  public get len():number {
+    return this._field.length;
+  }
+
   public markCell(x: number, y:number): void {
  
     const row: Row = this.field[x];

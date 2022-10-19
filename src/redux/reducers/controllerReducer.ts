@@ -11,13 +11,12 @@ const initialBoard: Controls = {
 }
 
 export function controllerReducer(state = initialBoard, action: any) {
+
   switch(action.type) {
     case ACTIONS.PLAY: {
-      state.played = !state.played
-      return {...state};
+      return {...state, played: !state.played};
     }
     case ACTIONS.STEP_UP: {
-      state.played = false;
       state.step++;
       return {...state};
     }
