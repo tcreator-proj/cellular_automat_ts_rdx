@@ -50,43 +50,45 @@ export class Engine {
   public step(): boolean[] {
 
     let mark: boolean = false;
-    // первая линия с которой снимаем последовательности байт по триаде
-    const tmpRow: Row = this.renderBoard.getRow(this.fromRow);
-    // куда прокидываем 
-    const newxtRow: Row = this.renderBoard.getRow(this.fromRow + 1);
 
-    // получаем триаду бинарных чисел от клеток на поле
-    const binaryTriad: number[] = tmpRow.getBinaryTriad(this.fromCell, this.fromCell + 2);
- 
-    // получаем результат сравнения триады с картой правила
-    const equalWithRule = this.ruleMap.equalWithRule(binaryTriad);
+    // цикл крутит до ближайшей проставляемой точки.
+    while (this.fromRow !== this.toRow - 1) {
+      // первая линия с которой снимаем последовательности байт по триаде
+      const tmpRow: Row = this.renderBoard.getRow(this.fromRow);
+      // куда прокидываем 
+      const newxtRow: Row = this.renderBoard.getRow(this.fromRow + 1);
 
-    // если жив - маркируем 
-    if(equalWithRule) {
-      mark = true;
-      newxtRow.getCell(this.currentCell)?.mark();
-    }
+      // получаем триаду бинарных чисел от клеток на поле
+      const binaryTriad: number[] = tmpRow.getBinaryTriad(this.fromCell, this.fromCell + 2);
 
-    // + стартовая точка триады
-    this.incrementCellStep();
+      // получаем результат сравнения триады с картой правила
+      const equalWithRule = this.ruleMap.equalWithRule(binaryTriad);
 
-    // Если точка маркера следуюзей клетки достигла конца линии сбрасываем *Cell счётчики
-    // увеличиваем счётчик текущей линии
-    if(this.currentCell === this.toCell) {
-      this.initializeCellCounters()
-      this.incrementRowStep();
+      // если жив - маркируем 
+      
+      if (equalWithRule) {
+        mark = true;
+        newxtRow.getCell(this.currentCell)?.mark();
+      }
+
+      // + стартовая точка триады
+      this.incrementCellStep();
+
+      // Если точка маркера следуюзей клетки достигла конца линии сбрасываем *Cell счётчики
+      // увеличиваем счётчик текущей линии
+      if (this.currentCell === this.toCell) {
+        this.initializeCellCounters()
+        this.incrementRowStep();
+      }
+
+      if(mark) break;
     }
 
     // если текущая линия равна последней - кидаем конец цикла
-    if(this.fromRow === this.toRow - 1) {
+    if (this.fromRow === this.toRow - 1) {
       return [mark, false];
     }
 
     return [mark, true];
   }
-
-
-
-  
-  
 }

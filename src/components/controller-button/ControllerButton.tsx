@@ -25,12 +25,12 @@ export const ControllerButton = (props: any) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  play: state.controllers.played
+  play: state.field.played
 })
 
 const mapDispatchToProps = (dispatch: Function) => ({
   onPlayPause: () => dispatch({ type: ACTIONS.PLAY }),
-  onStep: () => dispatch({ type: ACTIONS.STEP_UP }),
+  onStep: () => dispatch({ type: ACTIONS.ONE_STEP }),
   onClear: () => dispatch({ type: ACTIONS.CLEAR })
 })
 

@@ -1,26 +1,34 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux'
-import { ACTIONS } from '../redux/actions/actions';
+import { Dispatch } from 'redux';
+import { setIntrevalDispatcher, stepAndRenderDispatcher } from '../redux/dispatchers';
 
 export const Render = (props: any) => {
-  const { played } = props.controllers;
-
-  const dispatch = useDispatch();
+  const { played, stepAndRender, intervalID, setIntervalId } = props;
 
   useEffect(() => {
-    let i: any;
     if (played) {
-      i = setTimeout(() => {
-        dispatch({ type: ACTIONS.STEP_UP });
-        dispatch({ type: ACTIONS.RENDER });
-      }, 0)
+      let currentInterval: any = setInterval(() => {
+        if (currentInterval == intervalID) {
+          clearInterval(currentInterval);
+        }
+        stepAndRender();
+        console.log("ааа")
+      }, 1000)
+      setIntervalId(currentInterval);
     }
 
-    return () => {
-      clearTimeout(i)
+    if (!played) {
+      clearInterval(intervalID);
     }
-  })
+
+
+    return () => {
+      if (!played && intervalID) {
+        clearInterval(intervalID);
+      }
+    }
+  }, [played])
 
   return (
     <></>
@@ -28,8 +36,13 @@ export const Render = (props: any) => {
 }
 
 const mapStateToProps = (state: any) => ({
-  field: state.field.field,
-  controllers: state.controllers
+  played: state.field.played,
+  intervalID: state.field.intervalId
 })
 
-export default connect(mapStateToProps)(Render)
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  stepAndRender: () => dispatch(stepAndRenderDispatcher()),
+  setIntervalId: (id: number) => dispatch(setIntrevalDispatcher(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Render)
