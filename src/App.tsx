@@ -5,6 +5,7 @@ import ControllerButton from './components/controller-button/ControllerButton';
 import Header from './components/header/Header';
 import Render from './components/Render';
 import style from './app.module.css';
+import RulesSlider from './components/rules-slider/RulesSlider';
 
 function App() {
   return (
@@ -17,9 +18,10 @@ function App() {
         </Row>
         <Row>
           <Col className="render-board">
-            <CellarField />
+            <CellarField width={"full"}/>
           </Col>
           <Col className="controlls">
+            <RulesSlider />
             <ControllerButton />
           </Col>
 

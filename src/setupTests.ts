@@ -3,7 +3,7 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
-import RuleMap from './models/RuleMap';
+import RuleMap from "./models/Rule";
 import Converter from './utills/Converter';
 
 describe('Converter test', () => { 

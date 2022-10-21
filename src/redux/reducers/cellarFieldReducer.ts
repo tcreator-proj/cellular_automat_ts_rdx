@@ -15,7 +15,6 @@ type FieldState = {
 const row: number = 45;
 const col: number = 127;
 
-
 let f: Field = new Field(row, col, false);
 let e: Engine = new Engine(f, 18);
 

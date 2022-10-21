@@ -1,0 +1,11 @@
+.slider-body {
+  margin-top: 15px;
+  width: var(--width-render-board);
+  height: 76px;
+
+  
+  display: flex;
+  justify-content: row;
+  flex-wrap: nowrap;
+  overflow: auto;
+}

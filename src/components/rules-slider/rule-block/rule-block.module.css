@@ -1,0 +1,10 @@
+.rule-block {
+  margin: 5px;
+  padding: 0;
+  width: var(--width-preview-board);
+  height: var(--height-preview-board);
+}
+
+.rule-block:hover {
+  /* box-shadow: ; */
+}

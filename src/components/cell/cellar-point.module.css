@@ -13,6 +13,18 @@
   border-right: 1px solid var(--border-bgc);
 }
 
+.cell_10_mark {
+  composes: cell-mark;
+  width: var(--size-10);
+  height: var(--size-10);
+}
+
+.cell_10 {
+  composes: cell;
+  width: var(--size-10);
+  height: var(--size-10);
+}
+
 .cell_5_mark {
   composes: cell-mark;
   width: var(--size-5);

@@ -1,6 +1,11 @@
 :root {
-  --size-5: 10px;
+  --size-10: 10px;
+  --size-5: 5px;
   --border-bgc: lightgrey;
+  --width-render-board: 1272px;
+  --height-render-board: 450px;
+  --width-preview-board: 66px;
+  --height-preview-board: 66px;
 }
 
 .container {

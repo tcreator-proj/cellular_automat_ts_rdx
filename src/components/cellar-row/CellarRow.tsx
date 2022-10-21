@@ -1,18 +1,24 @@
-import {Cell} from '../../models/Cell';
+import { Cell } from '../../models/Cell';
 import CellarPoint from '../cell/CellarPoint';
 import style from './cellar-row.module.css';
 
 type CellsMap = {
   cells: Cell[],
-  onClickCellHandler: Function
+  onClickCellHandler: Function,
+  size: number
 }
 
 function CellarRow(props: CellsMap) {
-  const { cells, onClickCellHandler } = props;
+  const { cells, onClickCellHandler, size} = props;
   return (
     <div className={style.row} >
       {
-        cells.map((cell: Cell) => <CellarPoint x={cell.x} y={cell.y} marked={cell.point} onClickHandler={onClickCellHandler} key={cell.id} />)
+        cells.map((cell: Cell) => <CellarPoint
+          x={cell.x} y={cell.y} 
+          marked={cell.point} 
+          onClickHandler={onClickCellHandler} 
+          key={cell.id}
+          size={size} />)
       }
     </div>
   )

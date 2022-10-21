@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import {Cell} from "./Cell"
 import Coord from "./Coord";
 import {Row} from "./Row";
@@ -5,8 +6,10 @@ import {Row} from "./Row";
 export default class Field {
   protected _field: Row[] = [];
   protected size: number[] = [];
+  protected _id: string;
 
   constructor(sizeRow: number, sizeCol: number, random: boolean) {
+    this._id = nanoid();
     this.size[0] = sizeRow;
     this.size[1] = sizeCol;
 
@@ -28,6 +31,21 @@ export default class Field {
       }
       this._field.push(row);
     }
+  }
+
+  get id(): string {
+    return this._id;
+  }
+
+  /**
+   * Принимает массив координат и расставляет точки по полю
+   * @param coordList {Array<@link Coord>}
+   */
+  setPountMap(coordList: Coord[]): void {
+    coordList.forEach( (coord: Coord) => {
+      const {x, y} = coord.getCoords();
+      this._field[x].getCell(y)?.mark();
+    })
   }
 
   private generateRandomField() {

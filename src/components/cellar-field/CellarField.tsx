@@ -12,7 +12,10 @@ export const CellarField = (props: any) => {
   return (
     <Row className={style.field_600}>
       {
-        field.field.map((el: RowLine) => <CellarRow cells={el.cells} onClickCellHandler={onClickCellHandler} key={el.id}/>)
+        field.field.map((el: RowLine) => <CellarRow cells={el.cells} 
+        onClickCellHandler={onClickCellHandler} 
+        size={10} 
+        key={el.id}/>)
       }
     </Row>
   )

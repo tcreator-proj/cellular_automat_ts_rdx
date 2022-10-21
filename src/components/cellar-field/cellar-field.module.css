@@ -1,4 +1,4 @@
 .field_600 {
-  width: 1272px;
-  height: 450px;
+  width: var(--width-render-board);
+  height: var(--height-render-board);
 }

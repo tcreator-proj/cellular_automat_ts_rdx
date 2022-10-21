@@ -1,6 +1,6 @@
 import Field from "../models/Field";
 import { Row } from "../models/Row";
-import RuleMap from "../models/RuleMap";
+import Rule from "../models/Rule";
 
 /**
  * Класс итератор поля
@@ -13,14 +13,14 @@ export class Engine {
   protected toCell!: number;
   protected toRow!: number;
 
-  protected ruleMap: RuleMap;
+  protected ruleMap: Rule;
 
   constructor(renderBoard: Field, rule: number) {
     this.renderBoard = renderBoard;
     this.initializeCellCounters();
     this.initializeRowCounters();
 
-    this.ruleMap = new RuleMap(rule);
+    this.ruleMap = new Rule(rule);
   }
 
   private initializeCellCounters(): void {
@@ -65,7 +65,7 @@ export class Engine {
       const equalWithRule = this.ruleMap.equalWithRule(binaryTriad);
 
       // если жив - маркируем 
-      
+
       if (equalWithRule) {
         mark = true;
         newxtRow.getCell(this.currentCell)?.mark();
@@ -81,7 +81,7 @@ export class Engine {
         this.incrementRowStep();
       }
 
-      if(mark) break;
+      if (mark) break;
     }
 
     // если текущая линия равна последней - кидаем конец цикла
@@ -90,5 +90,36 @@ export class Engine {
     }
 
     return [mark, true];
+  }
+
+  /**
+   * Полностью строит поле
+   * @returns {@link Fiedl}
+   */
+  public run(): Field {
+    while (this.fromRow !== this.toRow - 1) {
+      const tmpRow: Row = this.renderBoard.getRow(this.fromRow);
+      const newxtRow: Row = this.renderBoard.getRow(this.fromRow + 1);
+
+      const binaryTriad: number[] = tmpRow.getBinaryTriad(this.fromCell, this.fromCell + 2);
+
+      const equalWithRule = this.ruleMap.equalWithRule(binaryTriad);
+
+      if (equalWithRule) {
+        newxtRow.getCell(this.currentCell)?.mark();
+      }
+      this.incrementCellStep();
+
+      if (this.currentCell === this.toCell) {
+        this.initializeCellCounters()
+        this.incrementRowStep();
+      }
+
+      if (this.fromRow === this.toRow - 1) {
+        break;
+      }
+    }
+
+    return this.renderBoard;
   }
 }
