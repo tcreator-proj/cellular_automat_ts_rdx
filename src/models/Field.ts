@@ -1,32 +1,27 @@
-import { Dimension } from "../types/enums";
 import {Cell} from "./Cell"
 import Coord from "./Coord";
-import ModelCells from "./ModelCells";
 import {Row} from "./Row";
 
 export default class Field {
   protected _field: Row[] = [];
-  protected size: number;
-  protected dimension: Dimension;
-  protected preparedModel: ModelCells | null;
+  protected size: number[] = [];
 
-  constructor(size: number, dimension: Dimension, preparedModel: ModelCells | null, random: boolean) {
-    this.size = size;
-    this.dimension = dimension;
-    this.preparedModel = preparedModel;
+  constructor(sizeRow: number, sizeCol: number, random: boolean) {
+    this.size[0] = sizeRow;
+    this.size[1] = sizeCol;
+
     if(random) {
       this.generateRandomField();
-      return;
     } else {
       this.generateField();
     }    
   }
 
   private generateField(): void {
-    const size = this.size;
-    for(let x = 0; x < size; x++) { // Rows
+    const [row, col] = this.size;
+    for(let x = 0; x < row; x++) { // Rows
       const row: Row = new Row();
-      for(let y = 0; y < size; y++) { // Cols
+      for(let y = 0; y < col; y++) { // Cols
         const coord: Coord = new Coord(x, y);
         const cell: Cell = new Cell(coord, false);
         row.appendCell(cell);
@@ -48,7 +43,6 @@ export default class Field {
   }
 
   public markCell(x: number, y:number): void {
- 
     const row: Row = this.field[x];
     const currentCell: Cell | null = row.getCell(y);
 

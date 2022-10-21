@@ -13,8 +13,7 @@ export const Render = (props: any) => {
           clearInterval(currentInterval);
         }
         stepAndRender();
-        console.log("ааа")
-      }, 1000)
+      }, 0)
       setIntervalId(currentInterval);
     }
 

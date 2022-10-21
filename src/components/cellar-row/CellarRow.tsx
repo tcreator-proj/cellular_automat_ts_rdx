@@ -1,4 +1,3 @@
-import { Row } from 'react-bootstrap';
 import {Cell} from '../../models/Cell';
 import CellarPoint from '../cell/CellarPoint';
 import style from './cellar-row.module.css';

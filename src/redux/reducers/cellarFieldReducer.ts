@@ -3,22 +3,27 @@ import { Engine } from '../../linear-engine/Engine';
 import Coord from '../../models/Coord';
 import Field from '../../models/Field';
 import { Row } from '../../models/Row';
-import { Dimension } from '../../types/enums';
 import { ACTIONS } from '../actions/actions';
 
 type FieldState = {
   field: Row[],
   played: boolean,
-  intervalId: number
+  intervalId: number,
+  rule: number
 }
 
-let f: Field = new Field(64, Dimension.ONE, null, false);
+const row: number = 45;
+const col: number = 127;
+
+
+let f: Field = new Field(row, col, false);
 let e: Engine = new Engine(f, 18);
 
 const initialBoard: FieldState = {
   field: f.field,
   played: false,
-  intervalId: 0
+  intervalId: 0,
+  rule: 0
 }
 
 export function cellarFieldReducer(state: FieldState = initialBoard, action: AnyAction) {
@@ -39,7 +44,7 @@ export function cellarFieldReducer(state: FieldState = initialBoard, action: Any
       return state;
     }
     case ACTIONS.CLEAR: {
-      f = new Field(64, Dimension.ONE, null, false);
+      f = new Field(row, col, false);
       state.field = f.field;
       e = new Engine(f, 18);
       state.played = false;

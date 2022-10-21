@@ -26,7 +26,7 @@ export class Engine {
   private initializeCellCounters(): void {
     this.fromCell = -1;
     this.currentCell = 0;
-    this.toCell = this.renderBoard.len;
+    this.toCell = this.renderBoard.getRow(0).len;
   }
 
   private initializeRowCounters(): void {

@@ -1,5 +1,4 @@
 import { MouseEventHandler } from 'react';
-import { useSelector } from 'react-redux';
 import Coord from '../../models/Coord';
 import style from './cellar-point.module.css';
 
@@ -21,7 +20,8 @@ function CellarPoint(props: CellData) {
   } 
 
   return (
-    <div className={marked ? style.cell_5_mark : style.cell_5} data-x={x} data-y={y} onClick={clickHandler}></div>
+    <div className={marked ? style.cell_5_mark : style.cell_5}
+      data-x={x} data-y={y} onClick={clickHandler}></div>
   )
 }
 
