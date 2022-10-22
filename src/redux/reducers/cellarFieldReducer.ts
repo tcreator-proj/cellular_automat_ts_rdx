@@ -16,6 +16,7 @@ const row: number = 45;
 const col: number = 127;
 
 let f: Field = new Field(row, col, false);
+f.setPountMap([new Coord(0, 63)])
 let e: Engine = new Engine(f, 0);
 
 const initialBoard: FieldState = {
@@ -50,6 +51,7 @@ export function cellarFieldReducer(state: FieldState = initialBoard, action: Any
     case ACTIONS.CLEAR: {
       f = new Field(row, col, false);
       state.field = f.field;
+      f.setPountMap([new Coord(0, 63)])
       e = new Engine(f, state.rule);
       state.played = false;
       clearInterval(state.intervalId);

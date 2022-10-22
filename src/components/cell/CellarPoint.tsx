@@ -1,4 +1,5 @@
-import { MouseEventHandler } from 'react';
+import React from 'react';
+import {MouseEventHandler } from 'react';
 import Coord from '../../models/Coord';
 import style from './cellar-point.module.css';
 
@@ -25,4 +26,4 @@ function CellarPoint(props: CellData) {
   )
 }
 
-export default CellarPoint;
+export default React.memo(CellarPoint);

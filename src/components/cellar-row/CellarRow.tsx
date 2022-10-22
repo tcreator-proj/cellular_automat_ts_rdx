@@ -1,3 +1,4 @@
+import React from 'react';
 import { Cell } from '../../models/Cell';
 import CellarPoint from '../cell/CellarPoint';
 import style from './cellar-row.module.css';
@@ -24,4 +25,4 @@ function CellarRow(props: CellsMap) {
   )
 }
 
-export default CellarRow
+export default CellarRow;

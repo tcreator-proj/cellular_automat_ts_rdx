@@ -2,6 +2,7 @@ import { MouseEventHandler } from 'react';
 import { Row } from '../../../models/Row';
 import CellarRow from '../../cellar-row/CellarRow';
 import styles from './rule-block.module.css';
+import html2canvas from 'html2canvas';
 
 type Preview = {
   field: Row[],

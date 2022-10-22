@@ -1,3 +1,4 @@
+import React from 'react';
 import { Row } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import Coord from '../../models/Coord';
@@ -29,4 +30,4 @@ const mapDispatchToProps = (dispatch: Function) => ({
   onClickCellHandler: (coord: Coord) => dispatch(clickCell(coord))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CellarField)
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(CellarField));
