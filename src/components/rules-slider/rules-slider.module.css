@@ -7,4 +7,11 @@
   justify-content: row;
   flex-wrap: nowrap;
   overflow: auto;
+  -webkit-user-select: none;
+  /* user-select -- это нестандартное свойство */
+
+  -moz-user-select: none;
+  /* поэтому нужны префиксы */
+
+  -ms-user-select: none;
 }

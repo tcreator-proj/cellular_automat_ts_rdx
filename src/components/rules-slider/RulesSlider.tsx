@@ -8,6 +8,21 @@ import styles from './rules-slider.module.css';
 
 export const RulesSlider = (props: any) => {
   const { previewList, onClick, currentRule } = props;
+
+  const clickAndMove: MouseEventHandler = (evt) => {
+    if(evt.buttons) {
+      const target: HTMLElement = evt.currentTarget as HTMLElement;
+      const parentBlockSlider = target.closest('div[data-marker]');
+  
+      if (parentBlockSlider) {
+        const { clientWidth, scrollWidth } = target;
+        const xx = Math.min(1, evt.clientX / clientWidth);
+        parentBlockSlider.scrollLeft = (scrollWidth - clientWidth) * xx;
+      }
+    }
+
+  };
+
   const onClickHandler: MouseEventHandler = (evt: any) => {
     const target = evt.target;
     const parent = target.closest('div[data-rule]');
@@ -21,14 +36,14 @@ export const RulesSlider = (props: any) => {
   }
 
   return (
-    <Row className={styles['slider-body']} data-marker={"slider"}>
+    <Row className={styles['slider-body']} data-marker={"slider"} onMouseMove={clickAndMove} onSelectCapture={() => false}>
       {
-        previewList.fields.map((f: Field, i: number) => <RuleBlock 
-        field={f.field} 
-        key={f.id} 
-        rule={i}
-        currentRule={currentRule}
-        onClickHandler={onClickHandler} />)
+        previewList.fields.map((f: Field, i: number) => <RuleBlock
+          field={f.field}
+          key={f.id}
+          rule={i}
+          currentRule={currentRule}
+          onClickHandler={onClickHandler} />)
       }
     </Row>
   )

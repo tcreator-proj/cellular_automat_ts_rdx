@@ -27,7 +27,7 @@ const initialBoard: FieldState = {
 }
 
 export function cellarFieldReducer(state: FieldState = initialBoard, action: AnyAction) {
-  function turnOff(state: any): void {
+  function turnOff(): void {
     state.played = false;
   }
 
@@ -45,7 +45,7 @@ export function cellarFieldReducer(state: FieldState = initialBoard, action: Any
     }
     case ACTIONS.ONE_STEP: {
       clearInterval(state.intervalId);
-      state.played = false;
+      turnOff()
 
       const [isMark]: boolean[] = e.step();
       
@@ -59,7 +59,7 @@ export function cellarFieldReducer(state: FieldState = initialBoard, action: Any
       state.field = f.field;
       f.setPountMap([new Coord(0, 63)])
       e = new Engine(f, state.rule);
-      state.played = false;
+      turnOff();
       clearInterval(state.intervalId);
       return { ...state }
     }
@@ -71,7 +71,7 @@ export function cellarFieldReducer(state: FieldState = initialBoard, action: Any
     case ACTIONS.STEP_AND_RENDER: {
       const [isMark, end]: boolean[] = e.step();
       if(end) {
-        state.played = false;
+        turnOff();
         return {...state};
       }
       if (isMark) {
