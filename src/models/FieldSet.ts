@@ -20,7 +20,7 @@ export default class FieldSet {
     for(let i = 0; i <= BITE; i++) {
       const field: Field = new Field(this.row, this.col, false);
       // просто ставит точку для начала построения карты 
-      field.setPountMap([new Coord(0, 5)]);
+      field.setPountMap([new Coord(0, 15)]);
       const engine: Engine = new Engine(field, i);
       this.fieldSet.push(engine.run());
     }

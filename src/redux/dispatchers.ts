@@ -14,4 +14,8 @@ function stepAndRenderDispatcher(): AnyAction {
   return {type: ACTIONS.STEP_AND_RENDER};
 }
 
-export {clickCell, setIntrevalDispatcher, stepAndRenderDispatcher};
+function changeRuleDispatcher(rule: number): AnyAction {
+  return {type: ACTIONS.CHANGE_RULE, payload: {rule}};
+}
+
+export {clickCell, setIntrevalDispatcher, stepAndRenderDispatcher, changeRuleDispatcher};

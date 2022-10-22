@@ -1,18 +1,30 @@
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 import { Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import Field from '../../models/Field';
+import { changeRuleDispatcher } from '../../redux/dispatchers';
 import RuleBlock from './rule-block/RuleBlock';
 import styles from './rules-slider.module.css';
 
 export const RulesSlider = (props: any) => {
-  const { previewList } = props;
-  console.log(previewList)
+  const { previewList, onClick, currentRule } = props;
+  const onClickHandler: MouseEventHandler = (evt: any) => {
+    const target = evt.target;
+    const parent = target.closest('div[data-rule]');
+    const parentBlock = target.closest('div[data-active]');
+    parentBlock.dataset.active = true;
+    onClick(Number(parent.dataset.rule));
+  }
 
   return (
     <Row className={styles['slider-body']}>
       {
-        previewList.fields.map((f: Field) => <RuleBlock field={f.field} key={f.id} />)
+        previewList.fields.map((f: Field, i: number) => <RuleBlock 
+        field={f.field} 
+        key={f.id} 
+        rule={i}
+        currentRule={currentRule}
+        onClickHandler={onClickHandler} />)
       }
     </Row>
   )
@@ -20,8 +32,13 @@ export const RulesSlider = (props: any) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    previewList: state.preview.rulesMap
+    previewList: state.preview.rulesMap,
+    currentRule: state.field.rule
   }
 }
 
-export default connect(mapStateToProps)(RulesSlider)
+const mapDispatchersToProps = (dispanch: Function) => ({
+  onClick: (rule: number) => dispanch(changeRuleDispatcher(rule))
+})
+
+export default connect(mapStateToProps, mapDispatchersToProps)(RulesSlider)

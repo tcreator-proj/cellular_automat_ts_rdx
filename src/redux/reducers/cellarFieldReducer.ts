@@ -16,7 +16,7 @@ const row: number = 45;
 const col: number = 127;
 
 let f: Field = new Field(row, col, false);
-let e: Engine = new Engine(f, 18);
+let e: Engine = new Engine(f, 0);
 
 const initialBoard: FieldState = {
   field: f.field,
@@ -27,6 +27,11 @@ const initialBoard: FieldState = {
 
 export function cellarFieldReducer(state: FieldState = initialBoard, action: AnyAction) {
   switch (action.type) {
+    case ACTIONS.CHANGE_RULE: {
+      state.rule = action.payload.rule;
+      e = new Engine(f, state.rule);
+      return state
+    }
     case ACTIONS.SET_INTERVAL_ID: {
       return {...state, intervalId: action.payload.id}
     }
@@ -45,7 +50,7 @@ export function cellarFieldReducer(state: FieldState = initialBoard, action: Any
     case ACTIONS.CLEAR: {
       f = new Field(row, col, false);
       state.field = f.field;
-      e = new Engine(f, 18);
+      e = new Engine(f, state.rule);
       state.played = false;
       clearInterval(state.intervalId);
       return { ...state }

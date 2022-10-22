@@ -4,13 +4,13 @@ type RulesSliderState = {
   rulesMap: FieldSet
 }
 
-const row: number = 11;
-const col: number = 11;
+const row: number = 16;
+const col: number = 31;
 
 const initialBoard: RulesSliderState = {
   rulesMap: new FieldSet(row, col)
 }
 
 export function previewRulesReducer(state: RulesSliderState = initialBoard) {
-  return state;
+  return {...state};
 }
