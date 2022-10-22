@@ -13,13 +13,13 @@ export const ControllerButton = (props: any) => {
 
 
   return (
-    <ButtonGroup className="my-3 w-50" aria-label="Basic example">
+    <ButtonGroup className="my-3 w-100" aria-label="Basic example">
       {!play
-        ? <Button variant="success" onClick={onPlay}>Play</Button>
+        ? <Button variant="outline-info" onClick={onPlay}>Play</Button>
         : <Button variant="info" onClick={onPause}>Pause</Button>
       }
-      <Button variant="secondary" onClick={onStepUp}>Step</Button>
-      <Button variant="warning" onClick={onCLearControllers} >Clear</Button>
+      <Button variant="outline-secondary" onClick={onStepUp}>Step</Button>
+      <Button variant="outline-warning" onClick={onCLearControllers} >Clear</Button>
     </ButtonGroup>
   )
 }

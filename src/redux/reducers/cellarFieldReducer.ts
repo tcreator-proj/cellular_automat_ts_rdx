@@ -27,6 +27,10 @@ const initialBoard: FieldState = {
 }
 
 export function cellarFieldReducer(state: FieldState = initialBoard, action: AnyAction) {
+  function turnOff(state: any): void {
+    state.played = false;
+  }
+
   switch (action.type) {
     case ACTIONS.CHANGE_RULE: {
       state.rule = action.payload.rule;
@@ -42,8 +46,10 @@ export function cellarFieldReducer(state: FieldState = initialBoard, action: Any
     case ACTIONS.ONE_STEP: {
       clearInterval(state.intervalId);
       state.played = false;
-      const isMark: boolean[] = e.step();
-      if (isMark[0]) {
+
+      const [isMark]: boolean[] = e.step();
+      
+      if (isMark) {
         return { ...state };
       }
       return state;
@@ -63,8 +69,12 @@ export function cellarFieldReducer(state: FieldState = initialBoard, action: Any
       return { ...state };
     }
     case ACTIONS.STEP_AND_RENDER: {
-      const isMark: boolean[] = e.step();
-      if (isMark[0]) {
+      const [isMark, end]: boolean[] = e.step();
+      if(end) {
+        state.played = false;
+        return {...state};
+      }
+      if (isMark) {
         return { ...state };
       }
       return state;

@@ -3,8 +3,6 @@
   width: var(--width-render-board);
   height: 104px;
   padding-top: 15px;
-
-  
   display: flex;
   justify-content: row;
   flex-wrap: nowrap;

@@ -86,10 +86,10 @@ export class Engine {
 
     // если текущая линия равна последней - кидаем конец цикла
     if (this.fromRow === this.toRow - 1) {
-      return [mark, false];
+      return [mark, true];
     }
 
-    return [mark, true];
+    return [mark, false];
   }
 
   /**
