@@ -12,5 +12,5 @@ const initialBoard: RulesSliderState = {
 }
 
 export function previewRulesReducer(state: RulesSliderState = initialBoard) {
-  return {...state};
+  return state;
 }

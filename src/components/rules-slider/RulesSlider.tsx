@@ -12,12 +12,16 @@ export const RulesSlider = (props: any) => {
     const target = evt.target;
     const parent = target.closest('div[data-rule]');
     const parentBlock = target.closest('div[data-active]');
+    const parentBlockSlider = target.closest('div[data-marker]');
+
+    parentBlockSlider.querySelector('div[data-active="true"]').dataset.active = "false";
+
     parentBlock.dataset.active = true;
     onClick(Number(parent.dataset.rule));
   }
 
   return (
-    <Row className={styles['slider-body']}>
+    <Row className={styles['slider-body']} data-marker={"slider"}>
       {
         previewList.fields.map((f: Field, i: number) => <RuleBlock 
         field={f.field} 
