@@ -2,7 +2,7 @@ export default class Coord {
   constructor(protected xPoint: number, protected yPoint: number) {}
 
   /**
-   * Возвращает объект координат
+   * Модель координат для расположения клетки
    * @return {x: number, y: number}
    */
   public getCoords(): {x: number, y: number} {

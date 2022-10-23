@@ -3,7 +3,7 @@ import Point from "./Point";
 import {nanoid} from 'nanoid';
 
 /**
- * Cell
+ * Модель представляющая ячейку в сетке отрисовки
  */
 export class Cell {
   protected coord: Coord;
@@ -16,10 +16,19 @@ export class Cell {
     this._id = nanoid()
   }
 
+  /**
+   * Помечает текущую клетку 
+   * либо снимает выделение
+   */
   public mark(): void {
     this._point.markIt();
   }
 
+  /**
+   * Возвращает булево значение
+   * помечена клетка или нет
+   * @return true - клетка помечена, иначе false
+   */
   public get point(): boolean {
     return this._point.point
   }
@@ -32,7 +41,11 @@ export class Cell {
     return this.coord.y;
   }
 
-  public get id() {
+  /**
+   * Возвращает строку идентификатора ячейки
+   * @return {string}
+   */
+  public get id(): string {
     return this._id;
   }
 }

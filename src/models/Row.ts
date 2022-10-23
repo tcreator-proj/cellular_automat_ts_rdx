@@ -1,6 +1,11 @@
 import {Cell} from "./Cell";
 import {nanoid} from 'nanoid';
 
+/**
+ * Модель построения структуры поля ячеек представляющий 
+ * линию. 
+ * Структурно Cell[]
+ */
 export class Row {
   protected _cells: Cell[];
   protected _id: string;
@@ -10,23 +15,45 @@ export class Row {
     this._id = nanoid();
   }
 
+  /**
+   * Добавляет в массив ячеек {@link Cell}
+   * @param cell 
+   */
   public appendCell(cell: Cell): void {
     this.cells.push(cell);
   }
 
+  /**
+   * Возвращает экземпляр ячейки
+   * @param index индекс в массиве ячеек
+   * @returns {@link Cell} или null 
+   */
   public getCell(index: number): Cell | null {
     return this._cells[index] || null;
   }
 
+  /**
+   * Возвращает ссылку на весь массив ячеек. 
+   * Мутабельно
+   * @return {@link Array<Cell>}
+   */
   public get cells(): Cell[] {
     return this._cells;
   }
 
+  /**
+   * Возвращает длину массива ячеек
+   * @return number
+   */
   public get len(): number {
     return this._cells.length;
   }
 
-  public get id() {
+  /**
+   * Возвращает идентификатор линии
+   * @return {string}
+   */
+  public get id(): string {
     return this._id;
   }
 

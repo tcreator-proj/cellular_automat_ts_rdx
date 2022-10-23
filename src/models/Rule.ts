@@ -1,6 +1,5 @@
 import Converter from "../utills/Converter";
 
-
 export default class Rule {
   protected currentRuleMap: number[];
 

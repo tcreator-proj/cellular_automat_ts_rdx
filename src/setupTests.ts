@@ -3,7 +3,7 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
-import RuleMap from "./models/Rule";
+import Rule from "./models/Rule";
 import Converter from './utills/Converter';
 
 describe('Converter test', () => { 
@@ -25,14 +25,19 @@ describe('Converter test', () => {
  })
 
  describe('RuleMap tests', () => { 
-  test("Test rule 40", () => {
-    const ruleMap: RuleMap = new RuleMap(40);
-    expect(ruleMap.equalWithRule([1,0,0])).toBeTruthy();
+  test("Test rule 30", () => {
+    const rule: Rule = new Rule(30);
+    expect(rule.equalWithRule([0,0,1])).toBeTruthy();
   })
 
-  test("Test rule 40 with wrong equal", () => {
-    const ruleMap: RuleMap = new RuleMap(40);
-    expect(ruleMap.equalWithRule([1,1,0])).toBeTruthy();
+  test("Test rule 62", () => {
+    const rule: Rule = new Rule(62);
+    expect(rule.equalWithRule([0,0,1])).toBeTruthy();
+  })
+
+  test("Test rule 90", () => {
+    const rule: Rule = new Rule(90);
+    expect(rule.equalWithRule([1,1,0])).toBeTruthy();
   })
  })
 
