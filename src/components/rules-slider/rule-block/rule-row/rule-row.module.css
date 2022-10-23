@@ -1,0 +1,10 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 0;
+}
+
+.row:last-of-type {
+  border-bottom: 1px solid var(--border-bgc);
+}

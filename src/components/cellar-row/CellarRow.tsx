@@ -1,4 +1,3 @@
-import React from 'react';
 import { Cell } from '../../models/Cell';
 import CellarPoint from '../cell/CellarPoint';
 import style from './cellar-row.module.css';
@@ -6,11 +5,10 @@ import style from './cellar-row.module.css';
 type CellsMap = {
   cells: Cell[],
   onClickCellHandler: Function,
-  size: number
 }
 
 function CellarRow(props: CellsMap) {
-  const { cells, onClickCellHandler, size} = props;
+  const { cells, onClickCellHandler} = props;
   return (
     <div className={style.row} >
       {
@@ -18,8 +16,7 @@ function CellarRow(props: CellsMap) {
           x={cell.x} y={cell.y} 
           marked={cell.point} 
           onClickHandler={onClickCellHandler} 
-          key={cell.id}
-          size={size} />)
+          key={cell.id} />)
       }
     </div>
   )

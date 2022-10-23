@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react'
+import React, { MouseEventHandler, useCallback, WheelEventHandler } from 'react'
 import { Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import Field from '../../models/Field';
@@ -9,21 +9,16 @@ import styles from './rules-slider.module.css';
 export const RulesSlider = (props: any) => {
   const { previewList, onClick, currentRule } = props;
 
-  const clickAndMove: MouseEventHandler = (evt) => {
-    if(evt.buttons) {
-      const target: HTMLElement = evt.currentTarget as HTMLElement;
-      const parentBlockSlider = target.closest('div[data-marker]');
-  
-      if (parentBlockSlider) {
-        const { clientWidth, scrollWidth } = target;
-        const xx = Math.min(1, evt.clientX / clientWidth);
-        parentBlockSlider.scrollLeft = (scrollWidth - clientWidth) * xx;
-      }
+  const clickAndMove: WheelEventHandler = useCallback((event: any) => {
+    const target: HTMLElement = event.target as HTMLElement;
+    const parentBlockSlider = target.closest('div[data-marker]');
+    const {deltaY} = event;
+    if(parentBlockSlider) {
+      parentBlockSlider.scrollLeft = parentBlockSlider.scrollLeft + deltaY;
     }
+  }, []);
 
-  };
-
-  const onClickHandler: MouseEventHandler = (evt: any) => {
+  const onClickHandler: MouseEventHandler = useCallback((evt: any) => {
     const target = evt.target;
     const parent = target.closest('div[data-rule]');
     const parentBlock = target.closest('div[data-active]');
@@ -33,10 +28,10 @@ export const RulesSlider = (props: any) => {
 
     parentBlock.dataset.active = true;
     onClick(Number(parent.dataset.rule));
-  }
+  }, []);
 
   return (
-    <Row className={styles['slider-body']} data-marker={"slider"} onMouseMove={clickAndMove} onSelectCapture={() => false}>
+    <Row className={styles['slider-body']} data-marker={"slider"} onWheel={clickAndMove}>
       {
         previewList.fields.map((f: Field, i: number) => <RuleBlock
           field={f.field}
