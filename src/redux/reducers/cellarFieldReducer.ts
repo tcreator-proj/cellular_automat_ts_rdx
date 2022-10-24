@@ -35,7 +35,7 @@ export function cellarFieldReducer(state: FieldState = initialBoard, action: Any
     case ACTIONS.CHANGE_RULE: {
       state.rule = action.payload.rule;
       e = new Engine(f, state.rule);
-      return state
+      return {...state}
     }
     case ACTIONS.SET_INTERVAL_ID: {
       return {...state, intervalId: action.payload.id}

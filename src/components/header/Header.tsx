@@ -1,12 +1,22 @@
 import React from 'react'
 import { Row} from 'react-bootstrap'
+import { connect } from 'react-redux'
 
-export const Header = () => {
+type RuleProps = {
+  rule: number
+}
+
+export const Header = (props: RuleProps) => {
+  const {rule} = props;
   return (
     <Row>
-      <h1 className='text-center text-uppercase'>cellular automat 1D</h1>
+      <h1 className='text-center text-uppercase'>cellular automata 1D <span className="text-lowercase">[rule - </span>{rule}]</h1>
     </Row>
   )
 }
 
-export default Header;
+const mapStateToProps = (store: any) => ({
+  rule: store.field.rule
+})
+
+export default connect(mapStateToProps)(React.memo(Header));

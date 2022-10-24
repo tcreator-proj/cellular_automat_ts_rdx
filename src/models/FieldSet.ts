@@ -15,6 +15,7 @@ export default class FieldSet {
     this.build()
   }
   
+  
   protected build(): void {
     const BITE: number = 255;
     for(let i = 0; i <= BITE; i++) {

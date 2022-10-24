@@ -3,6 +3,11 @@ import { connect } from 'react-redux'
 import { Dispatch } from 'redux';
 import { setIntrevalDispatcher, stepAndRenderDispatcher } from '../redux/dispatchers';
 
+/**
+ * Компонент запуска и остановки ререндера поля клеток
+ * @param props 
+ * @returns 
+ */
 export const Render = (props: any) => {
   const { played, stepAndRender, intervalID, setIntervalId } = props;
 
