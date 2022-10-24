@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cellular_automat_ts_rdx/static/css/main.26409fda.css",
-    "main.js": "/cellular_automat_ts_rdx/static/js/main.9484fcb9.js",
+    "main.js": "/cellular_automat_ts_rdx/static/js/main.a1b38cdc.js",
     "static/js/787.7e22a291.chunk.js": "/cellular_automat_ts_rdx/static/js/787.7e22a291.chunk.js",
     "index.html": "/cellular_automat_ts_rdx/index.html",
     "main.26409fda.css.map": "/cellular_automat_ts_rdx/static/css/main.26409fda.css.map",
-    "main.9484fcb9.js.map": "/cellular_automat_ts_rdx/static/js/main.9484fcb9.js.map",
+    "main.a1b38cdc.js.map": "/cellular_automat_ts_rdx/static/js/main.a1b38cdc.js.map",
     "787.7e22a291.chunk.js.map": "/cellular_automat_ts_rdx/static/js/787.7e22a291.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.26409fda.css",
-    "static/js/main.9484fcb9.js"
+    "static/js/main.a1b38cdc.js"
   ]
 }
