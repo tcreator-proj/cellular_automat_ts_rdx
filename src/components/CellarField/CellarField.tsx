@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import Coord from '../../models/Coord';
 import {Row as RowLine} from '../../models/Row';
 import { clickCell } from '../../redux/dispatchers';
-import CellarRow from '../cellar-row/CellarRow';
-import style from './cellar-field.module.css';
+import CellarRow from '../CellarRow/CellarRow';
+import style from './CellarField.module.css';
 
 export const CellarField = (props: any) => {
   const {field, onClickCellHandler} = props;

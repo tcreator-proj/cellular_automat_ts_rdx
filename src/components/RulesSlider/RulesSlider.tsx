@@ -1,10 +1,10 @@
-import React, { MouseEventHandler, useCallback, WheelEventHandler } from 'react'
-import { Row } from 'react-bootstrap'
-import { connect } from 'react-redux'
+import { MouseEventHandler, useCallback, WheelEventHandler } from 'react';
+import { Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import Field from '../../models/Field';
 import { changeRuleDispatcher } from '../../redux/dispatchers';
-import RuleBlock from './rule-block/RuleBlock';
-import styles from './rules-slider.module.css';
+import RuleBlock from './RuleBlock/RuleBlock';
+import styles from './RulesSlider.module.css';
 
 export const RulesSlider = (props: any) => {
   const { previewList, onClick, currentRule } = props;

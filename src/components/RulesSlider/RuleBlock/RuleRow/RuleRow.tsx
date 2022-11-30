@@ -1,5 +1,5 @@
-import style from './rule-row.module.css';
-import RuleCell from './rule-cell/RuleCell';
+import style from './RuleRow.module.css';
+import RuleCell from './RuleCell/RuleCell';
 import { Cell } from '../../../../models/Cell';
 
 type CellsMap = {
@@ -7,7 +7,7 @@ type CellsMap = {
 }
 
 function RuleRow(props: CellsMap) {
-  const { cells} = props;
+  const { cells } = props;
   return (
     <div className={style.row} >
       {

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import {MouseEventHandler } from 'react';
 import Coord from '../../models/Coord';
-import style from './cellar-point.module.css';
+import style from './CellarPoint.module.css';
 
 type CellData = {
   x: number,

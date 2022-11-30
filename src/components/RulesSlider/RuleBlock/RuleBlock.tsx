@@ -1,8 +1,7 @@
 import { MouseEventHandler } from 'react';
 import { Row } from '../../../models/Row';
-import CellarRow from '../../cellar-row/CellarRow';
-import styles from './rule-block.module.css';
-import RuleRow from './rule-row/RuleRow';
+import styles from './RuleBlock.module.css';
+import RuleRow from './RuleRow/RuleRow';
 
 type Preview = {
   field: Row[],

@@ -1,4 +1,4 @@
-import style from './rule-cell.module.css';
+import style from './RuleCell.module.css';
 
 type CellData = {
   marked: boolean,

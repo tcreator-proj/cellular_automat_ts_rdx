@@ -6,7 +6,7 @@ type RuleProps = {
   rule: number
 }
 
-export const Header = (props: RuleProps) => {
+const Header = (props: RuleProps) => {
   const {rule} = props;
   return (
     <Row>

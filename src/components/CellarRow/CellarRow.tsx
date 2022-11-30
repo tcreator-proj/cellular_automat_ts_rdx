@@ -1,6 +1,6 @@
 import { Cell } from '../../models/Cell';
-import CellarPoint from '../cell/CellarPoint';
-import style from './cellar-row.module.css';
+import CellarPoint from '../Cell/CellarPoint';
+import style from './CellarRow.module.css';
 
 type CellsMap = {
   cells: Cell[],

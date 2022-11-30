@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react'
+import { MouseEventHandler } from 'react'
 import { ButtonGroup, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { ACTIONS } from '../../redux/actions/actions'

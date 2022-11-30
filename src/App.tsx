@@ -1,15 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import { Col, Container, Row } from 'react-bootstrap';
-import CellarField from './components/cellar-field/CellarField';
-import ControllerButton from './components/controller-button/ControllerButton';
-import Header from './components/header/Header';
 import Render from './components/Render';
-import style from './app.module.css';
-import RulesSlider from './components/rules-slider/RulesSlider';
+import style from './App.module.css';
+import RulesSlider from './components/RulesSlider/RulesSlider';
+import CellarField from './components/CellarField/CellarField';
+import ControllerButton from './components/ControllerButton/ControllerButton';
+import Header from './components/Header/Header';
 
 function App() {
   return (
-
     <Container className={style.container}>
       <Render />
       <Row className="d-flex flex-direction-column justify-content-center">
@@ -24,9 +23,7 @@ function App() {
             <RulesSlider />
             <ControllerButton />
           </Col>
-
         </Row>
-
       </Row>
     </Container>
   );

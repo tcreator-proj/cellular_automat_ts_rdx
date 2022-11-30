@@ -14,7 +14,7 @@ export const Render = (props: any) => {
   useEffect(() => {
     if (played) {
       let currentInterval: any = setInterval(() => {
-        if (currentInterval == intervalID) {
+        if (currentInterval === intervalID) {
           clearInterval(currentInterval);
         }
         stepAndRender();
@@ -25,7 +25,6 @@ export const Render = (props: any) => {
     if (!played) {
       clearInterval(intervalID);
     }
-
 
     return () => {
       if (!played && intervalID) {
