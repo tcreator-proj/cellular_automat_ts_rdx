@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/cellular_automat_ts_rdx/static/css/main.26409fda.css",
-    "main.js": "/cellular_automat_ts_rdx/static/js/main.a1b38cdc.js",
-    "static/js/787.7e22a291.chunk.js": "/cellular_automat_ts_rdx/static/js/787.7e22a291.chunk.js",
+    "main.css": "/cellular_automat_ts_rdx/static/css/main.bfb45472.css",
+    "main.js": "/cellular_automat_ts_rdx/static/js/main.35390c45.js",
     "index.html": "/cellular_automat_ts_rdx/index.html",
-    "main.26409fda.css.map": "/cellular_automat_ts_rdx/static/css/main.26409fda.css.map",
-    "main.a1b38cdc.js.map": "/cellular_automat_ts_rdx/static/js/main.a1b38cdc.js.map",
-    "787.7e22a291.chunk.js.map": "/cellular_automat_ts_rdx/static/js/787.7e22a291.chunk.js.map"
+    "main.bfb45472.css.map": "/cellular_automat_ts_rdx/static/css/main.bfb45472.css.map",
+    "main.35390c45.js.map": "/cellular_automat_ts_rdx/static/js/main.35390c45.js.map"
   },
   "entrypoints": [
-    "static/css/main.26409fda.css",
-    "static/js/main.a1b38cdc.js"
+    "static/css/main.bfb45472.css",
+    "static/js/main.35390c45.js"
   ]
 }
