@@ -1,24 +1,42 @@
-import { MouseEventHandler, useCallback, WheelEventHandler } from 'react';
+import { MouseEventHandler, useMemo, useState, WheelEventHandler } from 'react';
 import { Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Field from '../../models/Field';
+import FieldSet from '../../models/FieldSet';
 import { changeRuleDispatcher } from '../../redux/dispatchers';
 import RuleBlock from './RuleBlock/RuleBlock';
+import { lazyLoadinSliderItem } from './RuleSlider.utills';
 import styles from './RulesSlider.module.css';
+import { PreviewState } from './RulesSlider.types';
 
-export const RulesSlider = (props: any) => {
-  const { previewList, onClick, currentRule } = props;
+const RulesSlider = (props: any) => {
+  const { currentRule, onClickChangeRule } = props;
 
-  const clickAndMove: WheelEventHandler = useCallback((event: any) => {
+  const previewList: FieldSet = useMemo(() => {
+    return new FieldSet(16, 31);
+  }, [])
+
+  const [previewState, setPreviewState] = useState<PreviewState>({
+    previewList,
+    showItem: 15
+  })
+
+  const clickAndMove: WheelEventHandler = (event: any) => {
     const target: HTMLElement = event.target as HTMLElement;
     const parentBlockSlider = target.closest('div[data-marker]');
-    const {deltaY} = event;
-    if(parentBlockSlider) {
+    const { deltaY } = event;
+    if (parentBlockSlider) {
       parentBlockSlider.scrollLeft = parentBlockSlider.scrollLeft + deltaY;
-    }
-  }, []);
 
-  const onClickHandler: MouseEventHandler = useCallback((evt: any) => {
+      lazyLoadinSliderItem(event, setPreviewState);
+    }
+  }
+
+  const onScrollHandler = (event: any) => {
+    lazyLoadinSliderItem(event, setPreviewState);
+  }
+
+  const onClickHandler: MouseEventHandler = (evt: any) => {
     const target = evt.target;
     const parent = target.closest('div[data-rule]');
     const parentBlock = target.closest('div[data-active]');
@@ -27,18 +45,22 @@ export const RulesSlider = (props: any) => {
     parentBlockSlider.querySelector('div[data-active="true"]').dataset.active = "false";
 
     parentBlock.dataset.active = true;
-    onClick(Number(parent.dataset.rule));
-  }, []);
+    onClickChangeRule(Number(parent.dataset.rule));
+  };
 
   return (
-    <Row className={styles['slider-body']} data-marker={"slider"} onWheel={clickAndMove}>
+    <Row className={styles['slider-body']} data-marker={"slider"} onWheel={clickAndMove} onScroll={onScrollHandler}>
       {
-        previewList.fields.map((f: Field, i: number) => <RuleBlock
-          field={f.field}
-          key={f.id}
-          rule={i}
-          currentRule={currentRule}
-          onClickHandler={onClickHandler} />)
+        previewState.previewList.fields
+          .filter((_, i: number) => i <= previewState.showItem)
+          .map((f: Field, i: number) => {
+            return <RuleBlock
+              field={f.field}
+              key={f.id}
+              rule={i}
+              currentRule={currentRule}
+              onClickHandler={onClickHandler} />
+          })
       }
     </Row>
   )
@@ -46,13 +68,12 @@ export const RulesSlider = (props: any) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    previewList: state.preview.rulesMap,
     currentRule: state.field.rule
   }
 }
 
 const mapDispatchersToProps = (dispanch: Function) => ({
-  onClick: (rule: number) => dispanch(changeRuleDispatcher(rule))
+  onClickChangeRule: (rule: number) => dispanch(changeRuleDispatcher(rule))
 })
 
 export default connect(mapStateToProps, mapDispatchersToProps)(RulesSlider)

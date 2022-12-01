@@ -2,15 +2,8 @@ import { AnyAction } from 'redux';
 import { Engine } from '../../linear-engine/Engine';
 import Coord from '../../models/Coord';
 import Field from '../../models/Field';
-import { Row } from '../../models/Row';
 import { ACTIONS } from '../actions/actions';
-
-type FieldState = {
-  field: Row[],
-  played: boolean,
-  intervalId: number,
-  rule: number
-}
+import { FieldState } from '../redux.types';
 
 const row: number = 45;
 const col: number = 127;
@@ -35,7 +28,10 @@ export function cellarFieldReducer(state: FieldState = initialBoard, action: Any
     case ACTIONS.CHANGE_RULE: {
       state.rule = action.payload.rule;
       e = new Engine(f, state.rule);
-      return {...state}
+      return {
+        ...state,
+        field: f.field
+      }
     }
     case ACTIONS.SET_INTERVAL_ID: {
       return {...state, intervalId: action.payload.id}
