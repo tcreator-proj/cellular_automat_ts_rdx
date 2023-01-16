@@ -31,7 +31,7 @@ export const Render = (props: any) => {
         clearInterval(intervalID);
       }
     }
-  }, [played])
+  }, [played, stepAndRender, intervalID, setIntervalId])
 
   return (
     <></>

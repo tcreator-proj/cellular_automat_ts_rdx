@@ -1,5 +1,7 @@
 .slider-body {
   margin-top: 15px;
+  padding-left: 0;
+  padding-right: 0;
   width: var(--width-render-board);
   height: 110px;
   padding-top: 15px;

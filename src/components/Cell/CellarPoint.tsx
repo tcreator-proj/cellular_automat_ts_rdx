@@ -18,7 +18,7 @@ function CellarPoint(props: CellData) {
     const {x, y} = target.dataset;
     const coord: Coord = new Coord(Number(x), Number(y));
     onClickHandler(coord);
-  }, []) 
+  }, [onClickHandler])
 
   return (
     <div className={marked ? style[`cell_mark`] : style[`cell`] }
