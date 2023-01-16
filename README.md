@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/nln7xbsp0pa3q7bn?svg=true)](https://ci.appveyor.com/project/TomuraCreator/cellular-automat-ts-rdx)
+
+
 # ***One-dimension cellular automata***
 
 deploy https://tcreator-proj.github.io/cellular_automat_ts_rdx/
