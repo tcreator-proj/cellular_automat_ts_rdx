@@ -1,7 +1,7 @@
 {
   "name": "cellar-automat-ts",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://tcreator-proj.github.io/cellular_automat_ts_rdx/",
   "dependencies": {
     "@hcorta/react-to-image": "^1.0.0",
@@ -15,8 +15,11 @@
     "@types/react-dom": "^18.0.0",
     "@types/react-redux": "^7.1.24",
     "bootstrap": "^5.2.3",
-    "gh-pages": "^4.0.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "lint-staged": "^13.1.0",
     "nanoid": "^4.0.0",
+    "prettier": "^2.8.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
@@ -28,9 +31,10 @@
     "typescript-plugin-css-modules": "^3.4.0"
   },
   "scripts": {
+    "prepare": "husky install",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
     "lint": "eslint .",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
@@ -52,5 +56,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "One dimension cellular automat at React/Redux",
+  "main": "index.js",
+  "repository": "git@github.com:tcreator-proj/cellular_automat_ts_rdx.git",
+  "author": "tomuraCreator <vladislavutkin92@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^8.0.0"
   }
 }
