@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cellular_automat_ts_rdx/static/css/main.d1f2eaab.css",
+    "main.js": "/cellular_automat_ts_rdx/static/js/main.d637b8b0.js",
+    "index.html": "/cellular_automat_ts_rdx/index.html",
+    "main.d1f2eaab.css.map": "/cellular_automat_ts_rdx/static/css/main.d1f2eaab.css.map",
+    "main.d637b8b0.js.map": "/cellular_automat_ts_rdx/static/js/main.d637b8b0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d1f2eaab.css",
+    "static/js/main.d637b8b0.js"
+  ]
+}
